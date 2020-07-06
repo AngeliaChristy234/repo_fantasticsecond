@@ -1,0 +1,32 @@
+html {
+  font-size: 30%;
+}
+@media only screen and (min-width: 75em) {
+  html {
+    font-size: 56.25%;
+ }
+}
+@media only screen and (min-width: 56.25em) {
+  html {
+    font-size: 50%;
+ }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+ }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Baloo Bhaina 2', sans-serif;
+}
+@media only screen and (min-width: 56.25em) {
+  body {
+    padding: 0 !important;
+ }
+}
+body ::selection {
+  background-color: #c1a57b;
+  color: #ececec;
+}
