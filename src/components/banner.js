@@ -34,7 +34,7 @@ const Styles = css({
 
 const Banner = () => {
   return (
-    <div css={Styles}>
+    <div css={Styles} id='banner'>
       <img src={bannerImg}/>
       <h1>Coklat Premium untuk Semua</h1>
     </div>

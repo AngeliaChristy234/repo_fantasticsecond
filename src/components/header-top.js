@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link } from "react-scroll"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -68,10 +68,10 @@ class HeaderTop extends React.Component {
       visible: false, placement: 'top'
     };
   }
-  
+
   componentDidMount() {
     this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
+    window.addEventListener('resize', this.updateWindowDimensions); 
   }
   
   componentWillUnmount() {
@@ -99,7 +99,7 @@ class HeaderTop extends React.Component {
       placement: e.target.value,
     });
   }
-
+  
   render() {
     const { width, placement, visible } = this.state
 
@@ -107,8 +107,13 @@ class HeaderTop extends React.Component {
       return (
         <header css={Styles}>  
           <img src={logo}/>
-          <Link>Home</Link>
-          <Link>Showcase</Link>
+          <Link onClick={window.scrollTo(0, 0)}>Home</Link>
+          <Link
+            to='card3'
+            smooth = {true}
+            offset={-150}
+            duration={500}
+          >Showcase</Link>
           <Link>Hubungi kami</Link>
         </header>
       )
@@ -126,7 +131,14 @@ class HeaderTop extends React.Component {
         >
           <Menu>
             <Menu.Item>Home</Menu.Item>
-            <Menu.Item>Showcase</Menu.Item>
+            <Menu.Item>
+              <Link
+                to='card3'
+                smooth = {true}
+                offset={-150}
+                duration={500}
+              >Showcase</Link>
+            </Menu.Item>
             <Menu.Item>Hubungi kami</Menu.Item>
           </Menu>
         </Drawer>

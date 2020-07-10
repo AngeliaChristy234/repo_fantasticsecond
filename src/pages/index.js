@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
 
 import Layout from "../components/layout"
+import LayoutSide from "../components/layout_side"
 import SEO from "../components/seo"
 
 import './app.css';

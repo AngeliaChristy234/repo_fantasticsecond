@@ -41,7 +41,7 @@ const Styles = css({
 
 const Card4 = () => {
   return (
-    <div css={Styles}>
+    <div css={Styles} id='card4'>
       <Divider><h2>Koleksi kita</h2></Divider>
       <Row gutter={[12, 12]}>
 

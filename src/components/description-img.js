@@ -77,7 +77,7 @@ const secondRow = () => {
 
 const DescImg = () => {
   return (
-    <div css={Styles}>
+    <div css={Styles} id='desc_img'>
       <h2>Dibuat dengan bahan terbaik</h2>
       <Divider/>
 

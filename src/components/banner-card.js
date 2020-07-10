@@ -65,7 +65,7 @@ const Styles = css({
 
 const BannerCard = () => {
   return (
-    <div css={Styles}>
+    <div css={Styles} id='banner_card'>
       <img src={bannerImg} className='imgBanner'/>
       <Row gutter={32}>
         <Col xs={24} sm={12}>

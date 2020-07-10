@@ -35,7 +35,7 @@ const Styles = css({
 
 const StepsVertical = () => {
   return (
-    <div>
+    <div id='steps_v'>
       <Divider><h2>Langkah order</h2></Divider>
       <Steps direction="vertical" css={Styles}>
         <Step title="Finished" description="This is a description." />

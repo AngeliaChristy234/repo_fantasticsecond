@@ -17,7 +17,7 @@ const Styles = css({
 
 const Desc2 = () => {
   return (
-    <div css={Styles}>
+    <div css={Styles} id='desc2'>
       <Divider><h2>Misi kami</h2></Divider>
       <Row gutter={[{xs: 12, md: 24}, 24]}>
 

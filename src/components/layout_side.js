@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 // COMPONENTS
-import HeaderTop from "./header-top"
 import HeaderSide from "./header-side"
 import Banner from './banner'
 import BannerCard from './banner-card'
@@ -51,52 +50,41 @@ const Styles = ({
   })
 })
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+const LayoutSide = ({ children }) => {
   return (
     <>
       <div>
-      {/* FIXED HEADER TOP */}
-        <div style={{height: compUnits.headerHeight}} />
-        <HeaderTop />
+      {/* FIXED HEADER SIDE */}
+        <HeaderSide/>
       {/* BODY / CONTENT */}
-        <main>
+        <main css={Styles.bodySidebar}>
           <Banner/>
           <div css={Styles.body}>
-            <Card3/>
-            <Desc2/>
-            <Desc3/>
-            <StepsVertical/>
+            <Card3 />
+            <Desc2 />
+            <Desc3 />
+            <StepsVertical />
             {children}
           </div>
 
           <BannerCard />
           <div css={Styles.body}>
             <DescImg />  
+            <Card4 />
           </div>
 
           <BannerButton />
+            
+          <Footer />
         </main>
 
-        <Footer />
       </div>
     </>
   )
 }
 
-
-
-Layout.propTypes = {
+LayoutSide.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default LayoutSide
