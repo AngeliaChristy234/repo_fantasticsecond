@@ -1,7 +1,10 @@
-import React from "react"
+/** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import bannerImg from '../images/banner.jpg';
-import { absCenter, boxShadows, compUnits, mq, styleColors, styleFonts } from '../styles';
+
+import { boxShadows, styleColors, styleFonts } from '../styles/abstract'
+import { absCenter, compUnits } from '../styles/utils'
+import { mq } from '../styles/mediaQueries'
 
 const Styles = css({
   position: 'relative',
@@ -19,24 +22,42 @@ const Styles = css({
     objectFit: 'cover'
   },
 
-  '& h1': {
+  '& .center': {
     ...absCenter,
-    width: '80vw',
-    color: styleColors.white,
-    fontWeight: styleFonts.weightBold,
-    textShadow: boxShadows.point8,
 
-    [mq[2]]: {
-      fontSize: styleFonts.sizeHuge
+    '& h1, & h3': {
+      width: '80vw',
+      color: styleColors.white,
+    },
+
+    '& h1': {
+      textTransform: 'capitalize',
+      fontWeight: styleFonts.weightBold,
+      textShadow: boxShadows.point8,
+  
+      [mq[2]]: {
+        fontSize: styleFonts.sizeHuge
+      }
+    },
+
+    '& h3': {
+      fontFamily: styleFonts.secondary,
+  
+      [mq[2]]: {
+        fontSize: styleFonts.sizeSmall
+      }
     }
   }
 })
 
-const Banner = () => {
+const Banner = ({ content }) => {
   return (
     <div css={Styles} id='banner'>
-      <img src={bannerImg}/>
-      <h1>Coklat Premium untuk Semua</h1>
+      <img src={bannerImg} alt={content.heading}/>
+      <div className='center'>
+        <h1>{ content.heading }</h1>
+        <h3>{ content.desc }</h3>
+      </div>
     </div>
   )
 }

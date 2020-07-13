@@ -1,12 +1,24 @@
 module.exports = {
   siteMetadata: {
-    title: `Dinda's Pastry`,
-    description: `Looking for the best CINAMMON Rolls in town? Well we got ya covered! Don't missed out on our 30% discounts`,
-    url: `https://fantasticsecond.com`,
-    author: `Jessica Stevanie`,
+    title: `Fantastic Second`,
+    description: `Perlu landing page sederhana bayar per halaman untuk keperluan bisnis Anda? Tenang saja, we got you covered!`,
+    image: `http://fantasticsecond.com/FS_images/iconlogo.png`,
+    siteUrl: `https://fantasticsecond.com`,
+    author: `Angelia Christy`,
+    social: {
+      instagram: 'fantasticsecond'
+    },
+    socialLinks: {
+      instagram: 'https://instagram.com/fantasticsecond/',
+      email: 'mailto:ask@fantasticsecond.com',
+      whatsapp: 'https://api.whatsapp.com/send?phone=87775678991&text=&source=&data=&app_absent='
+    },
+    keywords: ['landing page', 'landing page custom', 'website custom', 'desain website custom', 'jasa buat website', 'jasa desain website', 'landing page murah', 'website murah']
   },
   plugins: [
     'gatsby-plugin-antd',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-robots-txt',
     {
       resolve: `gatsby-plugin-emotion`,
       options: {
@@ -45,10 +57,7 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/logo.jpg`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+      }
+    }
   ],
 }

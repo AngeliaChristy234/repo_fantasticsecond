@@ -1,12 +1,14 @@
 import React from "react"
+import { css } from '@emotion/core'
+import { DividerTitle } from './divider'
 
-import { mq, styleColors, styleSpacing } from '../styles';
-import { css } from '@emotion/core';
-import { Steps, Divider } from 'antd';
+import { styleColors, styleSpacing  } from '../styles/abstract'
+import { mq } from '../styles/mediaQueries'
+
+import { Steps } from 'antd';
 const { Step } = Steps;
 
 const Styles = css({
-
   '& .ant-steps-item-icon': {
     backgroundColor: styleColors.primary,
     borderColor: styleColors.secondary,
@@ -27,20 +29,38 @@ const Styles = css({
   },
 
   [mq[2]]: {
-    transform: 'scale(1.5) translateX(15%)',
-    marginTop: styleSpacing.spacingBig,
-    maxWidth: '50rem'
+    overflow: 'hidden',
+
+    '& .ant-steps': {
+      height: '30rem',
+      marginTop: styleSpacing.spacingBig,
+
+      '& > *': {
+        transformOrigin: 'left top',
+        transform: 'scale(1.3)'
+      }
+    },
+
+    '& button': {
+      float: 'left',
+      marginTop: styleSpacing.spacingMedium
+    }
+
   }
 })
 
-const StepsVertical = () => {
+const StepsVertical = ({ content }) => {
   return (
-    <div id='steps_v'>
-      <Divider><h2>Langkah order</h2></Divider>
-      <Steps direction="vertical" css={Styles}>
-        <Step title="Finished" description="This is a description." />
-        <Step title="In Progress" description="This is a description." />
-        <Step title="Waiting" description="This is a description." />
+    <div id='steps_v' css={Styles}>
+      <DividerTitle title={content.heading}/>
+      <Steps direction="vertical">
+        {
+          content.items.map(e => (
+            (e.link)
+            ? <Step title={e.title} description={e.desc} onClick={() => window.location.href = e.link} style={{cursor: 'pointer'}}/>
+            : <Step title={e.title} description={e.desc} />
+          ))
+        }
       </Steps>
     </div>
   )

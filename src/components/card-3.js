@@ -1,13 +1,13 @@
 import React from "react"
-import { css, jsx } from '@emotion/core';
+import { css } from '@emotion/core';
+import { DividerTitle } from './divider'
 
-import img1 from '../images/card3-1.jpg';
-import img2 from '../images/card3-2.jpg';
-import img3 from '../images/card3-3.jpg';
+import { styleColors, styleSpacing } from '../styles/abstract'
+import { mq } from '../styles/mediaQueries'
+import { compUnits } from '../styles/utils'
 
-import { compUnits, mq, styleColors } from '../styles';
-import { Row, Col, Divider, Card } from 'antd'
-const { Meta } = Card;
+import { Row, Col, Card } from 'antd'
+const { Meta } = Card
 
 const Styles = css({
   
@@ -15,6 +15,7 @@ const Styles = css({
     border: `1px solid ${styleColors.grayLight}`,
 
     '& img': {
+      marginBottom: styleSpacing.spacingMini,
       height: '30vh',
       width: '100%',
       objectFit: compUnits.imageFit
@@ -25,9 +26,6 @@ const Styles = css({
     '& .ant-card': {
       height: '55rem',
 
-      '& img': {
-        height: '30rem'
-      }
     }
   },
 
@@ -36,46 +34,26 @@ const Styles = css({
       height: '45rem'
     }
   }
-
 })
 
-const Card3 = () => {
+const Card3 = ({ content }) => {
   return (
     <div css={Styles} id='card3'>
-      <Divider><h2>Koleksi kita</h2></Divider>
+      <DividerTitle title={content.heading}/>
       <Row gutter={[12, 12]}>
-
-      {/* FIRST CARD */}
-        <Col xs={24} sm={8}>
-          <Card
-            hoverable
-            cover={<img src={img1}/>}
-          >
-            <Meta title="Dark chocolate cake" description="Dark chocolate 80%" />
-          </Card>
-        </Col>
-
-      {/* SECOND CARD */}
-        <Col xs={24} sm={8}>
-          <Card
-            hoverable
-            cover={<img src={img2}/>}
-          >
-            <Meta title="Tiramisu goodness" description="Handmade tiramisu flavour" />
-          </Card>
-        </Col>
-
-      {/* THIRD CARD */}
-        <Col xs={24} sm={8}>
-          <Card
-            hoverable
-            cover={<img src={img3}/>}
-          >
-            <Meta title="Classic chocolate" description="Favoritnya pesta ulang tahun!" />
-          </Card>
-        </Col>
-
-        
+      {
+        content.items.map(e => (
+          <Col xs={24} sm={8}>
+            <Card hoverable>
+            <img src={e.img} alt={e.title}/>
+              <Meta
+                title={e.title}
+                description={e.desc}
+              />
+            </Card>
+          </Col>
+        ))
+      }
       </Row>
     </div>
   )

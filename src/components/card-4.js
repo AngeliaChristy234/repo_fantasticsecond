@@ -1,4 +1,4 @@
-import React from "react"
+/** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
 import img1 from '../images/card4-1.jpg';
@@ -6,7 +6,10 @@ import img2 from '../images/card4-2.jpg';
 import img3 from '../images/card4-3.jpg';
 import img4 from '../images/card4-4.jpg';
 
-import { compUnits, mq, styleColors } from '../styles';
+import { styleColors } from '../styles/abstract'
+import { mq } from '../styles/mediaQueries'
+import { compUnits } from '../styles/utils'
+
 import { Row, Col, Divider, Card } from 'antd'
 const { Meta } = Card;
 

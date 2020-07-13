@@ -1,13 +1,28 @@
-import React from "react"
+/** @jsx jsx */
 import { css, jsx } from '@emotion/core';
+import { DividerTitle } from './divider'
 
-import { compUnits, styleFonts } from '../styles';
-import { Row, Col, Divider } from 'antd'
+import { styleColors, styleFonts, styleSpacing } from '../styles/abstract'
+import { hoverTrans } from '../styles/utils'
+import { Row, Col } from 'antd'
 
 const Styles = css({
-
   '& h2, & h3': {
     textTransform: 'capitalize'
+  },
+
+  '& .box': {
+    padding: styleSpacing.spacingSmall,
+    border: `1px solid ${styleColors.grayLight}`,
+    cursor: 'pointer',
+
+    ...hoverTrans,
+
+    '& img': {
+      marginBottom: styleSpacing.spacingSmall,
+      height: '20rem',
+      objectFit: 'contain'
+    }
   },
 
   '& h5': {
@@ -15,24 +30,26 @@ const Styles = css({
   }
 })
 
-const Desc2 = () => {
+const Desc2 = ({ content }) => {
   return (
     <div css={Styles} id='desc2'>
-      <Divider><h2>Misi kami</h2></Divider>
+      <DividerTitle title={ content.heading }/>
       <Row gutter={[{xs: 12, md: 24}, 24]}>
-
-      {/* FIRST / LEFT DESC*/}
-        <Col xs={24} sm={12}>
-          <h3>Subtitle</h3>
-          <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</h5>
-        </Col>
-
-      {/* SECOND / RIGHT DESC */}
-        <Col xs={24} sm={12}>
-          <h3>Subtitle</h3>
-          <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</h5>
-        </Col>
-
+        {
+          content.items.map(e => (
+            <Col xs={24} sm={12} onClick={() => window.location.href = e.link }>
+              <div className='box'>
+                <h3>{e.title}</h3>
+                {
+                  (e.img)
+                  ? <img src={e.img} alt='jasa web desain'/>
+                  : null
+                }
+                <h5>{e.desc}</h5>
+              </div>
+            </Col>
+          ))
+        }
       </Row>
     </div>
   )

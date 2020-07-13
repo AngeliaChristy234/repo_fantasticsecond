@@ -1,37 +1,20 @@
-import React from "react"
+import { useEffect } from "react";
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { styleFonts } from '../styles/abstract'
+import { mq } from '../styles/mediaQueries'
+import { compUnits, hoverScale } from '../styles/utils'
 
 // COMPONENTS
 import HeaderTop from "./header-top"
-import HeaderSide from "./header-side"
-import Banner from './banner'
-import BannerCard from './banner-card'
-import BannerButton from './banner-btn'
-import Card3 from './card-3'
-import Card4 from './card-4'
-import Desc2 from './description-2'
-import Desc3 from './description-3'
-import DescImg from './description-img'
-import StepsVertical from './steps-V'
 import Footer from './footer'
-
-import { compUnits, hoverScale, mq, styleFonts, styleSpacing } from '../styles'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core'
 
 const Styles = ({
   body: css({
-    padding: `0 ${styleSpacing.spacingSmall}`,
     textAlign: 'center',
 
-    '& > *': {
-      marginTop: styleSpacing.spacingHuge
-    },
-
     [mq[2]]: {
-      padding: `0 ${styleSpacing.spacingHuge}`,
-
       '& h2': hoverScale,
 
       '& h3': {
@@ -52,48 +35,26 @@ const Styles = ({
 })
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
+  
   return (
-    <>
-      <div>
-      {/* FIXED HEADER TOP */}
-        <div style={{height: compUnits.headerHeight}} />
-        <HeaderTop />
-      {/* BODY / CONTENT */}
-        <main>
-          <Banner/>
-          <div css={Styles.body}>
-            <Card3/>
-            <Desc2/>
-            <Desc3/>
-            <StepsVertical/>
-            {children}
-          </div>
+    <div>
+    {/* FIXED HEADER TOP */}
+      <div style={{height: compUnits.headerHeight}} />
+      <HeaderTop />
 
-          <BannerCard />
-          <div css={Styles.body}>
-            <DescImg />  
-          </div>
-
-          <BannerButton />
-        </main>
-
-        <Footer />
-      </div>
-    </>
+    {/* BODY / CONTENT */}
+      <main>
+        <div css={Styles.body}>
+          {children}
+        </div>
+      </main>
+      <Footer />
+    </div>
   )
 }
-
-
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
