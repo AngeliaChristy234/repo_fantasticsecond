@@ -25,12 +25,6 @@ const Styles = ({
         fontSize: styleFonts.sizeDefault
       }
     }
-  }),
-
-  bodySidebar: css({
-    [mq[2]]: {
-      marginLeft: compUnits.headerWidth
-    }
   })
 })
 
