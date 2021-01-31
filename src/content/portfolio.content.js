@@ -1,5 +1,3 @@
-import { absContent } from './abs.content'
-
 const content = {
   seo: {
     title: 'Lihat contoh hasil karya kami sebelumnya.',
@@ -11,7 +9,7 @@ const content = {
     {
       title: "it's all good florist",
       desc: 'Custom company profile',
-      link: '/portfolio/iagflorist',
+      link: '/cpanel_uploads/iagflorist',
       img: `http://fantasticsecond.com/FS_images/iagflorist.png`
     },
     {

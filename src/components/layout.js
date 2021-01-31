@@ -12,6 +12,7 @@ import Footer from './footer'
 
 const Styles = ({
   body: css({
+    fontFamily: styleFonts.primary,
     textAlign: 'center',
 
     [mq[2]]: {
